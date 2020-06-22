@@ -7,10 +7,14 @@ import {
   Route,
 } from 'react-router-dom';
 import Landing from './Landing';
+import Cases from './Cases';
 
 const App = () => (
   <Router>
     <Switch>
+      <Route path='/cases' >
+        <Cases />
+      </Route>
       <Route path='/' >
         <Landing />
       </Route>
