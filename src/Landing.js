@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 
 const Landing = () => (
@@ -16,7 +17,7 @@ const Landing = () => (
         <Button>Save</Button>
       </Col>
       <Col>
-      <a href="cases">Back to List of Cases</a>
+        <Link to="/cases">Back to List of Cases</Link>
       </Col>
     </Row>
     <hr></hr>
@@ -55,7 +56,7 @@ const Landing = () => (
         <Form.Check inline label="3 Days" type="checkbox" id={`inline-checkbox-1`} />
         <Form.Check inline label="7 Days" type="checkbox" id={`inline-checkbox-2`} />
         <Form.Check inline label="14 Days" type="checkbox" id={`inline-checkbox-3`} />
-        <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-4`} checked/>
+        <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-4`} checked />
         <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-5`} />
         <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-6`} />
         <Form.Check inline label="Custom Date" type="checkbox" id={'inline-checkbox-7'} />
