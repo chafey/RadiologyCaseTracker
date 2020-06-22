@@ -51,10 +51,12 @@ const Landing = () => (
       <div key={`inline-checkbox`} className="mb-3">
         <Form.Check inline label="3 Days" type="checkbox" id={`inline-checkbox-1`} />
         <Form.Check inline label="7 Days" type="checkbox" id={`inline-checkbox-2`} />
-        <Form.Check inline label="14 Days" type="checkbox" id={`inline-checkbox-2`} />
-        <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-2`} />
-        <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-2`} />
-        <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-2`} />
+        <Form.Check inline label="14 Days" type="checkbox" id={`inline-checkbox-3`} />
+        <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-4`} />
+        <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-5`} />
+        <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-6`} />
+        <Form.Check inline label="Custom Date" type="checkbox" id={'inline-checkbox-7'} />
+        <Form.Control inline label="Custom Date Text" type="date" id={'inline-custom-date-1'} />
       </div>
     </Form>
   </Container>
