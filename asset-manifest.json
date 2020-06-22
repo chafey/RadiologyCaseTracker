@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/RadiologyCaseTracker/static/css/main.29b0924c.chunk.css",
+    "main.js": "/RadiologyCaseTracker/static/js/main.0ec5deff.chunk.js",
+    "main.js.map": "/RadiologyCaseTracker/static/js/main.0ec5deff.chunk.js.map",
+    "runtime-main.js": "/RadiologyCaseTracker/static/js/runtime-main.062ab603.js",
+    "runtime-main.js.map": "/RadiologyCaseTracker/static/js/runtime-main.062ab603.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/RadiologyCaseTracker/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.033ff343.chunk.js": "/RadiologyCaseTracker/static/js/2.033ff343.chunk.js",
+    "static/js/2.033ff343.chunk.js.map": "/RadiologyCaseTracker/static/js/2.033ff343.chunk.js.map",
+    "index.html": "/RadiologyCaseTracker/index.html",
+    "precache-manifest.55ea0cf9ad674e239867dc9fe3ec2771.js": "/RadiologyCaseTracker/precache-manifest.55ea0cf9ad674e239867dc9fe3ec2771.js",
+    "service-worker.js": "/RadiologyCaseTracker/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/RadiologyCaseTracker/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.29b0924c.chunk.css.map": "/RadiologyCaseTracker/static/css/main.29b0924c.chunk.css.map",
+    "static/js/2.033ff343.chunk.js.LICENSE.txt": "/RadiologyCaseTracker/static/js/2.033ff343.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.062ab603.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.033ff343.chunk.js",
+    "static/css/main.29b0924c.chunk.css",
+    "static/js/main.0ec5deff.chunk.js"
+  ]
+}
