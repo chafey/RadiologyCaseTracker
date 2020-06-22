@@ -45,6 +45,7 @@ const Landing = () => (
     <hr></hr>
     <Row>
       <Col>Descriptors</Col>
+      <Col><FilterableCategoryTable tags={TAGS}/></Col>
       <Col>add hashtags, separated by a comma e.g. #neuro, #glioma, #rare</Col>
     </Row>
     <Row>
@@ -55,7 +56,7 @@ const Landing = () => (
         <Form.Check inline label="3 Days" type="checkbox" id={`inline-checkbox-1`} />
         <Form.Check inline label="7 Days" type="checkbox" id={`inline-checkbox-2`} />
         <Form.Check inline label="14 Days" type="checkbox" id={`inline-checkbox-3`} />
-        <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-4`} checked/>
+        <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-4`} />
         <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-5`} />
         <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-6`} />
         <Form.Check inline label="Custom Date" type="checkbox" id={'inline-checkbox-7'} />
@@ -64,5 +65,93 @@ const Landing = () => (
     </Form>
   </Container>
 );
+
+const TAGS = [
+  {category: '#GBM'},
+  {category: '#Neuro'},
+  {category: '#rare'},
+  {category: '#TeachingFile'}
+];
+
+class TagRow extends React.Component {
+  render() {
+    const category = this.props.category;
+    return (
+      <tr>
+        <td>{category}</td>
+      </tr>
+    );
+  }
+}
+
+class CategoryTable extends React.Component {
+  render() {
+    const filterText = this.props.filterText;
+    
+    const rows = [];
+    let lastCategory = null;
+
+    this.props.categories.forEach((category) => {
+      rows.push(
+        <TagRow
+          category={category}
+          key={category}
+        />
+      );
+    });
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    );
+  }
+}
+
+class SearchBar extends React.Component {
+  render() {
+    const filterText = this.props.filterText;
+    
+    return (
+      <form>
+        <input
+          type="text"
+          placeholder="#neuro, #glioma, #rare"
+          value={filterText} />
+        <p>
+          add hashtags, separated by a comma
+        </p>
+      </form>
+    );
+  }
+}
+
+class FilterableCategoryTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterText: '',
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBar
+          filterText={this.state.filterText}
+        />
+        <CategoryTable
+          category={this.props.category}
+          filterText={this.state.filterText}
+        />
+      </div>
+    );
+  }
+}
 
 export default Landing;
