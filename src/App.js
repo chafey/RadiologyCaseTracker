@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -25,15 +26,33 @@ const ExampleToast = ({ children }) => {
 
 const App = () => (
   <Container className="p-3">
-    <Jumbotron>
-      <h1 className="header">Welcome To React-Bootstrap</h1>
-      <ExampleToast>
-        We now have Toasts
-        <span role="img" aria-label="tada">
-          🎉
-        </span>
-      </ExampleToast>
-    </Jumbotron>
+    <Row>
+      <Col>User Account: John Doe MD</Col>
+      <Col>
+      <Button>Cancel</Button>
+      <Button>Save</Button>
+      </Col>
+    </Row>
+    <hr></hr>
+    <Row>
+      <Col>Patient Name</Col>
+      <Col>Mary, John</Col>
+      <Col>Accession No:</Col>
+      <Col>233-23423-234</Col>
+    </Row>
+    <Row>
+      <Col>MRN</Col>
+      <Col>123-567-8309</Col>
+      <Col>Modality</Col>
+      <Col>MRI Pelvis</Col>
+    </Row>
+    <Row>
+      <Col>Study Date</Col>
+      <Col>06/19/2020</Col>
+      <Col>Reason for Study</Col>
+      <Col>******</Col>
+    </Row>
+
   </Container>
 );
 

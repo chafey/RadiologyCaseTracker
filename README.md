@@ -11,10 +11,12 @@ SIIM 2020 Hackathon Project for tracking radiology cases
   * Install the [Remote Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 * [Docker](https://www.docker.com/get-started)
 
+Alternatively it should work if you have Node 14 installed already
+
 # Build/Install
 
 * Clone repostiory and start visual studio code in it
-  * > git clone git@github.com:chafey/RadiologyCaseTracker.git
+  * > git clone https://github.com/chafey/RadiologyCaseTracker.git
   * > cd RadiologyCaseTracker
   * > code .
 * Click "Open in remote container" from green button bottom left of visual studio code
