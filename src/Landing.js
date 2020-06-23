@@ -153,10 +153,10 @@ const Visits = () => (
       <Col>Visit</Col><Col>Physician</Col><Col>Location</Col><Col>link</Col>
     </Row>
     <Row>
-      <Col>7/1/2020</Col><Col>Dr.Pepper</Col><Col>Amb. Surgery</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-1'} /></Col>
+      <Col>7/1/2020</Col><Col>Dr.Pepper</Col><Col>Amb. Surgery</Col><Col><Form.Check inline label="" type="checkbox" id={'inline-op-visit-1'} /></Col>
     </Row>
     <Row>
-      <Col>8/5/2020</Col><Col>Dr.Seldinger</Col><Col>Interventional Radiology</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-2'} /></Col></Row>
+      <Col>8/5/2020</Col><Col>Dr.Seldinger</Col><Col>Interventional Radiology</Col><Col><Form.Check inline label="" type="checkbox" id={'inline-op-visit-2'} /></Col></Row>
     <Row>
       <Col>8/20/2020</Col><Col>Dr.Gupta</Col><Col>Outpatient</Col><Col><Form.Check inline label="" type="checkbox" id={'inline-op-visit-3'} /></Col>
     </Row>
