@@ -8,80 +8,110 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 
 
-const Landing = () => (
-  <Container className="p-3">
-    <Row>
-      <Col>User Account: John Doe MD</Col>
-      <Col>
-        <Button>Cancel</Button>
-        <Button>Save</Button>
-      </Col>
-      <Col>
-        <Link to="/cases">Back to List of Cases</Link>
-      </Col>
+const Landing = () => {
+  // Code for pulling metadata from DICOMweb and FHIR APIs
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  // Clicking the Pull Metadata button will log the API GET response to the console
+  React.useEffect(() => {
+    if (isLoading) {
+      var apikey = prompt('Please enter your API key:', 'apikey')
+      fetch('https://hackathon.siim.org/fhir/ImagingStudy/a508258761846499', {
+        method: 'GET',
+        headers: {
+          'apikey': apikey
+        }
+      })
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .then(success => {
+          setIsLoading(false);
+        })
+        .catch(e => {
+          setIsLoading(false);
+        });
+    }
+  }, [isLoading]);
+
+  const pullMetadata = () => {
+    setIsLoading(true);
+  };
+
+  return (
+    <Container className="p-3">
+      <Row>
+        <Col>User Account: John Doe MD</Col>
+        <Col>
+          <Button>Cancel</Button>
+          <Button>Save</Button>
+          <Button><a href="javascript:(function(){var e=function(d){var l=d.querySelectorAll('p.ui-li-desc');var i;for(i of l){var s=i.innerHTML;if(s.search('Accession')>=0){var t=i.getElementsByTagName('strong');var a=t[0].innerText;return a;}}};var d=document;var a=e(d);alert(a)}())">CaseSaver</a></Button>
+          <Button
+            type='submit'
+            disabled={isLoading}
+            onClick={!isLoading ? pullMetadata : null}
+          >
+            Pull Metadata
+        </Button>
+        </Col>
+        <Col>
+          <Link to="/cases">Back to List of Cases</Link>
+        </Col>
+      </Row>
+      <hr></hr>
+      <Row>
+        <Col>Patient Name</Col>
+        <Col>SIIM^Andy</Col>
+        <Col>Accession No:</Col>
+        <Col>a508258761846499</Col>
+      </Row>
+      <Row>
+        <Col>MRN</Col>
+        <Col>TCGA-50-5072</Col>
+        <Col>Modality</Col>
+        <Col>CT CHEST N/C</Col>
+      </Row>
+      <Row>
+        <Col>DOB</Col>
+        <Col>06/20/1974</Col>
+        <Col>Reason for Study</Col>
+        <Col>Follow-up of pulmonary nodules</Col>
+      </Row>
+      <Row>
+        <Col>Study Date</Col>
+        <Col>01/28/2020</Col>
+        <Col></Col>
+        <Col></Col>
+      </Row>
+
+      <br></br>
+      <Row>
+        <Col>Orders</Col>
+      </Row>
+      <hr></hr>
+      <Row>
+        <Col>Descriptor: add hashtags, separated by a comma</Col>
+        <Col><Tags /></Col>
+      </Row>
+      <Row><Form.Check inline label="Add to teaching file" type="checkbox" id={'inline-checkbox-teachingfile'} /></Row>
+      <Row>
+        <Col><FollowUp /></Col>
+      </Row>
+      <Row>
+      <Form.Group controlId="additional-notes">
+        <Form.Label>Additional Notes</Form.Label>
+        <Form.Control as="textarea" placeholder="Enter additional notes here" rows="3"/>
+      </Form.Group>
     </Row>
-    <hr></hr>
-    <Row>
-      <Col>Patient Name</Col>
-      <Col>Mary, John</Col>
-      <Col>Accession No:</Col>
-      <Col>233-23423-234</Col>
-    </Row>
-    <Row>
-      <Col>MRN</Col>
-      <Col>123-567-8309</Col>
-      <Col>Modality</Col>
-      <Col>MRI Pelvis</Col>
-    </Row>
-    <Row>
-      <Col>DOB</Col>
-      <Col>06/22/1974</Col>
-      <Col>Reason for Study</Col>
-      <Col>Dyspareunia x 2 years</Col>
-    </Row>
-    <Row>
-      <Col>Study Date</Col>
-      <Col>06/19/2020</Col>
-      <Col></Col>
-      <Col></Col>
-    </Row>
-  
-    <br></br>
-    <Row>
-      <Col>Orders</Col>
-    </Row>
-    <hr></hr>
-    <Row>
-      <Col>Descriptor: add hashtags, separated by a comma</Col>
-      <Col><Tags /></Col>
-    </Row>
-    <Row>
-    <Form>
-    <FollowUp />
-    </Form>
-    </Row>
-    <Row>
-      <Col><Form.Check inline label="Pending Outside Imaging" type="checkbox" id={'inline-checkbox-outside-img'} /></Col>
-      <Col><Form.Check inline label="For review at Tumor Board" type="checkbox" id={'inline-checkbox-tumor-board'} /></Col>
-      <Col><SearchVisits /></Col>
-    </Row>
-    <Row>
-    <Form.Group controlId="additional-notes">
-      <Form.Label>Additional Notes</Form.Label>
-      <Form.Control as="textarea" placeholder="Enter additional notes here" rows="3"/>
-    </Form.Group>
-    </Row>
-    
-  </Container>
-);
+    </Container>);
+}
 
 const FollowUp = () => {
   const [showFollowUpParameters, setShowFollowUpParameters] = React.useState(false)
   const onClick = () => {showFollowUpParameters ? setShowFollowUpParameters(false) : setShowFollowUpParameters(true);}
   return (
     <div>
-      <input type="checkbox" name="Follow-up" label="For follow-up" onClick={onClick} />For follow-up
-      { showFollowUpParameters ? <FollowUpParameters /> : null }
+      <Form.Check inline type="checkbox" label="Follow-up" onClick={onClick} />
+      {showFollowUpParameters ? <FollowUpParameters /> : null}
     </div>
   )
 }
@@ -99,6 +129,7 @@ const SearchVisits = () => {
 
 const FollowUpParameters = () => (
   <div key={`inline-checkbox`} className="mb-3">
+    <Row>
     <Form.Check inline label="3 Days" type="checkbox" id={`inline-checkbox-1`} />
     <Form.Check inline label="7 Days" type="checkbox" id={`inline-checkbox-2`} />
     <Form.Check inline label="14 Days" type="checkbox" id={`inline-checkbox-3`} />
@@ -106,7 +137,13 @@ const FollowUpParameters = () => (
     <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-5`} />
     <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-6`} />
     <Form.Check inline label="Custom Date" type="checkbox" id={'inline-checkbox-7'} />
-    <Form.Control inline label="Custom Date Text" type="date" id={'inline-custom-date-1'} />
+    <Form.Control inline label="Custom Date Text" type="date" id={'inline-custom-date-1'} width="200" />
+    </Row>
+    <Row>
+    <Col><Form.Check label="Pending Outside Imaging" type="checkbox" id={'inline-checkbox-outside-img'} /></Col>
+    <Col><Form.Check label="For review at Tumor Board" type="checkbox" id={'inline-checkbox-tumor-board'} /></Col>
+    <Col><SearchVisits /></Col>
+    </Row>
   </div>
 );
 
@@ -117,10 +154,10 @@ const Visits = () => (
       <Col>Visit</Col><Col>Physician</Col><Col>Location</Col><Col>link</Col>
     </Row>
     <Row>
-            <Col>7/1/2020</Col><Col>Dr.Pepper</Col><Col>Amb. Surgery</Col><Col><Form.Check inline label="" type="checkbox" id={'inline-op-visit-1'} /></Col>
+      <Col>7/1/2020</Col><Col>Dr.Pepper</Col><Col>Amb. Surgery</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-1'} /></Col>
     </Row>
-    <Row>  
-      <Col>8/5/2020</Col><Col>Dr.Seldinger</Col><Col>Interventional Radiology</Col><Col><Form.Check inline label="" type="checkbox" id={'inline-op-visit-2'} /></Col></Row>
+    <Row>
+      <Col>8/5/2020</Col><Col>Dr.Seldinger</Col><Col>Interventional Radiology</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-2'} /></Col></Row>
     <Row>
       <Col>8/20/2020</Col><Col>Dr.Gupta</Col><Col>Outpatient</Col><Col><Form.Check inline label="" type="checkbox" id={'inline-op-visit-3'} /></Col>
     </Row>
