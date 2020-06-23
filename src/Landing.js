@@ -44,7 +44,6 @@ const Landing = () => {
         <Col>
           <Button>Cancel</Button>
           <Button>Save</Button>
-          // <Button><a href="javascript:(function(){var e=function(d){var l=d.querySelectorAll('p.ui-li-desc');var i;for(i of l){var s=i.innerHTML;if(s.search('Accession')>=0){var t=i.getElementsByTagName('strong');var a=t[0].innerText;return a;}}};var d=document;var a=e(d);alert(a)}())">CaseSaver</a></Button>
           <Button
             type='submit'
             disabled={isLoading}
