@@ -9,12 +9,48 @@ import { Link } from 'react-router-dom';
 
 
 const Landing = () => (
+  // Code for pulling metadata from DICOMweb and FHIR APIs
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  // Clicking the Pull Metadata button will log the API GET response to the console
+  React.useEffect(() => {
+    if (isLoading) {
+      var apikey = prompt('Please enter your API key:', 'apikey')
+      fetch('https://hackathon.siim.org/fhir/ImagingStudy/a508258761846499', {
+        method: 'GET',
+        headers: {
+          'apikey': apikey
+        }
+      })
+        .then(response => response.json())
+        .then(console.log(response))
+        .then(success => {
+          setIsLoading(false);
+        })
+        .catch(e => {
+          setIsLoading(false);
+        });
+    }, [isLoading]);
+  }
+
+  const pullMetadata = () => {
+    setIsLoading(true);
+  };
+
   <Container className="p-3">
     <Row>
       <Col>User Account: John Doe MD</Col>
       <Col>
         <Button>Cancel</Button>
         <Button>Save</Button>
+        <Button><a href="javascript:(function(){var e=function(d){var l=d.querySelectorAll('p.ui-li-desc');var i;for(i of l){var s=i.innerHTML;if(s.search('Accession')>=0){var t=i.getElementsByTagName('strong');var a=t[0].innerText;return a;}}};var d=document;var a=e(d);alert(a)}())">CaseSaver</a></Button>
+        <Button
+          type='submit'
+          disabled={isLoading}
+          onClick={!isLoading ? pullMetadata : null}
+        >
+          Pull Metadata
+        </Button>
       </Col>
       <Col>
         <Link to="/cases">Back to List of Cases</Link>
@@ -23,29 +59,29 @@ const Landing = () => (
     <hr></hr>
     <Row>
       <Col>Patient Name</Col>
-      <Col>Mary, John</Col>
+      <Col>SIIM^Andy</Col>
       <Col>Accession No:</Col>
-      <Col>233-23423-234</Col>
+      <Col>a508258761846499</Col>
     </Row>
     <Row>
       <Col>MRN</Col>
-      <Col>123-567-8309</Col>
+      <Col>TCGA-50-5072</Col>
       <Col>Modality</Col>
-      <Col>MRI Pelvis</Col>
+      <Col>CT CHEST N/C</Col>
     </Row>
     <Row>
       <Col>DOB</Col>
-      <Col>06/22/1974</Col>
+      <Col>?</Col>
       <Col>Reason for Study</Col>
-      <Col>Dyspareunia x 2 years</Col>
+      <Col>...</Col>
     </Row>
     <Row>
       <Col>Study Date</Col>
-      <Col>06/19/2020</Col>
+      <Col>01/28/2000</Col>
       <Col></Col>
       <Col></Col>
     </Row>
-  
+
     <br></br>
     <Row>
       <Col>Orders</Col>
@@ -99,7 +135,7 @@ const Results = () => (
     <Row>
             <Col>7/1/2020</Col><Col>Dr.Pepper</Col><Col>Amb. Surgery</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-1'} /></Col>
     </Row>
-    <Row>  
+    <Row>
       <Col>8/5/2020</Col><Col>Dr.Seldinger</Col><Col>Interventional Radiology</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-2'} /></Col></Row>
     <Row>
       <Col>8/20/2020</Col><Col>Dr.Gupta</Col><Col>Outpatient</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-3'} /></Col>
