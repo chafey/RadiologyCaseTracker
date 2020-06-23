@@ -71,13 +71,13 @@ const Landing = () => {
       </Row>
       <Row>
         <Col>DOB</Col>
-        <Col>?</Col>
+        <Col>06/20/1974</Col>
         <Col>Reason for Study</Col>
-        <Col>...</Col>
+        <Col>Follow-up of pulmonary nodules</Col>
       </Row>
       <Row>
         <Col>Study Date</Col>
-        <Col>01/28/2000</Col>
+        <Col>01/28/2020</Col>
         <Col></Col>
         <Col></Col>
       </Row>
@@ -91,43 +91,63 @@ const Landing = () => {
         <Col>Descriptor: add hashtags, separated by a comma</Col>
         <Col><Tags /></Col>
       </Row>
+      <Row><Form.Check inline label="Add to teaching file" type="checkbox" id={'inline-checkbox-teachingfile'} /></Row>
       <Row>
-        <Col>Follow up:</Col>
+        <Col><FollowUp /></Col>
       </Row>
       <Row>
-        <Form>
-          <div key={`inline-checkbox`} className="mb-3">
-            <Form.Check inline label="3 Days" type="checkbox" id={`inline-checkbox-1`} />
-            <Form.Check inline label="7 Days" type="checkbox" id={`inline-checkbox-2`} />
-            <Form.Check inline label="14 Days" type="checkbox" id={`inline-checkbox-3`} />
-            <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-4`} />
-            <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-5`} />
-            <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-6`} />
-            <Form.Check inline label="Custom Date" type="checkbox" id={'inline-checkbox-7'} />
-            <Form.Control inline label="Custom Date Text" type="date" id={'inline-custom-date-1'} />
-          </div>
-        </Form>
-      </Row>
-      <Row>
-        <Col><Form.Check inline label="Pending Outside Imaging" type="checkbox" id={'inline-checkbox-outside-img'} /></Col>
-        <Col><Form.Check inline label="For review at Tumor Board" type="checkbox" id={'inline-checkbox-tumor-board'} /></Col>
-        <Col><Search /></Col>
-      </Row>
+      <Form.Group controlId="additional-notes">
+        <Form.Label>Additional Notes</Form.Label>
+        <Form.Control as="textarea" placeholder="Enter additional notes here" rows="3"/>
+      </Form.Group>
+    </Row>
     </Container>);
 }
 
-const Search = () => {
-  const [showResults, setShowResults] = React.useState(false)
-  const onClick = () => setShowResults(true)
+const FollowUp = () => {
+  const [showFollowUpParameters, setShowFollowUpParameters] = React.useState(false)
+  const onClick = () => {showFollowUpParameters ? setShowFollowUpParameters(false) : setShowFollowUpParameters(true);}
   return (
     <div>
-      <input type="submit" value="Pending Scheduled Procedure" onClick={onClick} />
-      {showResults ? <Results /> : null}
+      <Form.Check inline type="checkbox" label="Follow-up" onClick={onClick} />
+      {showFollowUpParameters ? <FollowUpParameters /> : null}
     </div>
   )
 }
 
-const Results = () => (
+const SearchVisits = () => {
+  const [showVisits, setShowVisits] = React.useState(false)
+  const onClick = () => {showVisits ? setShowVisits(false) : setShowVisits(true);}
+  return (
+    <div>
+      <input type="submit" value="Pending Scheduled Visit" onClick={onClick} />
+      { showVisits ? <Visits /> : null }
+    </div>
+  )
+}
+
+const FollowUpParameters = () => (
+  <div key={`inline-checkbox`} className="mb-3">
+    <Row>
+    <Form.Check inline label="3 Days" type="checkbox" id={`inline-checkbox-1`} />
+    <Form.Check inline label="7 Days" type="checkbox" id={`inline-checkbox-2`} />
+    <Form.Check inline label="14 Days" type="checkbox" id={`inline-checkbox-3`} />
+    <Form.Check inline label="1 Month" type="checkbox" id={`inline-checkbox-4`} />
+    <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-5`} />
+    <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-6`} />
+    <Form.Check inline label="Custom Date" type="checkbox" id={'inline-checkbox-7'} />
+    <Form.Control inline label="Custom Date Text" type="date" id={'inline-custom-date-1'} width="200" />
+    </Row>
+    <Row>
+    <Col><Form.Check label="Pending Outside Imaging" type="checkbox" id={'inline-checkbox-outside-img'} /></Col>
+    <Col><Form.Check label="For review at Tumor Board" type="checkbox" id={'inline-checkbox-tumor-board'} /></Col>
+    <Col><SearchVisits /></Col>
+    </Row>
+  </div>
+);
+
+
+const Visits = () => (
   <div id="results" className="search-results">
     <Row>
       <Col>Visit</Col><Col>Physician</Col><Col>Location</Col><Col>link</Col>
@@ -138,7 +158,7 @@ const Results = () => (
     <Row>
       <Col>8/5/2020</Col><Col>Dr.Seldinger</Col><Col>Interventional Radiology</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-2'} /></Col></Row>
     <Row>
-      <Col>8/20/2020</Col><Col>Dr.Gupta</Col><Col>Outpatient</Col><Col><Form.Check inline label="Link visit" type="checkbox" id={'inline-op-visit-3'} /></Col>
+      <Col>8/20/2020</Col><Col>Dr.Gupta</Col><Col>Outpatient</Col><Col><Form.Check inline label="" type="checkbox" id={'inline-op-visit-3'} /></Col>
     </Row>
   </div>
 )
@@ -192,6 +212,7 @@ class Tags extends React.Component {
     );
   }
 }
+
 
 
 export default Landing;
