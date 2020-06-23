@@ -76,6 +76,15 @@ const Cases = () => {
         initialDate: '2011-02-13 10:01',
         type: 'follow-up',
         quantity: 1,
+    },
+    {
+        id: '58017',
+        firstName: 'Andy',
+        lastName: 'SIIM',
+        category: 'Pending Biopsy',
+        initialDate: '2011-06-23 14:20',
+        type: 'follow-up',
+        quantity: 1,
     }]
     return (
         <>
