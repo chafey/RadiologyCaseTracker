@@ -1,6 +1,8 @@
 # RadiologyCaseTracker
 SIIM 2020 Hackathon Project for tracking radiology cases
 
+Try it out here [https://chafey.github.io/RadiologyCaseTracker/](https://chafey.github.io/RadiologyCaseTracker/)
+
 # Wireframes link
 
 [Balsamiq](https://balsamiq.cloud/s2zngvg/p2j4upu/r9062)
@@ -15,7 +17,7 @@ Alternatively it should work if you have Node 14 installed already
 
 # Build/Install
 
-* Clone repostiory and start visual studio code in it
+* Clone repostiory and contstart visual studio code in it
   * > git clone https://github.com/chafey/RadiologyCaseTracker.git
   * > cd RadiologyCaseTracker
   * > code .
