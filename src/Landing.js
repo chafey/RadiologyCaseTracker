@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 
 const Landing = () => (
@@ -16,7 +17,7 @@ const Landing = () => (
         <Button>Save</Button>
       </Col>
       <Col>
-      <a href="cases">Back to List of Cases</a>
+        <Link to="/cases">Back to List of Cases</Link>
       </Col>
     </Row>
     <hr></hr>

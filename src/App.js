@@ -10,7 +10,7 @@ import Landing from './Landing';
 import Cases from './Cases';
 
 const App = () => (
-  <Router>
+  <Router basename='/RadiologyCaseTracker'>
     <Switch>
       <Route path='/cases' >
         <Cases />
