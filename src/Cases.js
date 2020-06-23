@@ -40,6 +40,42 @@ const Cases = () => {
         initialDate: '2011-04-21 08:12',
         type: 'follow-up',
         quantity: 1,
+    },
+    {
+        id: '58013',
+        firstName: 'John',
+        lastName: 'Doe',
+        category: 'Teaching File',
+        initialDate: '2011-04-21 08:12',
+        type: 'Resident Case',
+        quantity: 1,
+    },
+    {
+        id: '58014',
+        firstName: 'Nicole',
+        lastName: 'Siimsmith',
+        category: 'awaiting previous imaging',
+        initialDate: '2011-05-01 14:17',
+        type: 'follow-up',
+        quantity: 1,
+    },
+    {
+        id: '58015',
+        firstName: 'Samir',
+        lastName: 'Patel',
+        category: 'awaiting biopsy',
+        initialDate: '2011-01-21 11:21',
+        type: 'follow-up',
+        quantity: 1,
+    },
+    {
+        id: '58016',
+        firstName: 'Ignacious',
+        lastName: 'Smalltoe',
+        category: 'awaiting excisional biopsy',
+        initialDate: '2011-02-13 10:01',
+        type: 'follow-up',
+        quantity: 1,
     }]
     return (
         <>

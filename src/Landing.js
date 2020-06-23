@@ -136,7 +136,7 @@ const FollowUpParameters = () => (
     <Form.Check inline label="6 Months" type="checkbox" id={`inline-checkbox-5`} />
     <Form.Check inline label="1 Year" type="checkbox" id={`inline-checkbox-6`} />
     <Form.Check inline label="Custom Date" type="checkbox" id={'inline-checkbox-7'} />
-    <Form.Control inline label="Custom Date Text" type="date" id={'inline-custom-date-1'} width="200" />
+    <Form.Control inline label="Custom Date Text" type="date" id={'inline-custom-date-1'} style={{width: 200}} />
     </Row>
     <Row>
     <Col><Form.Check label="Pending Outside Imaging" type="checkbox" id={'inline-checkbox-outside-img'} /></Col>
@@ -186,7 +186,7 @@ class Tags extends React.Component {
   }
 
   onClick = () => {
-    const { inputValue, tags: tags } = this.state;
+    const { inputValue, tags } = this.state;
     if (inputValue) {
       const nextState = [...tags, inputValue];
       this.setState({ tags: nextState, inputValue: '' });
@@ -202,7 +202,7 @@ class Tags extends React.Component {
   }
 
   render() {
-    const { tags: tags, inputValue } = this.state;
+    const { tags, inputValue } = this.state;
     return (
       <div>
         <input type="text" value={inputValue} onChange={this.onChange} />
